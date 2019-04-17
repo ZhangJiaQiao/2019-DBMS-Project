@@ -26,8 +26,7 @@ public:
     ~PAllocator();
 
     char*    getLeafPmemAddr(PPointer p);
-    bool     getLeaf(PPointer &p, char* &pmem_addr);     // simply get a free leaf and return
-    bool     useLeaf(PPointer p);      // set the leaf as used
+    bool     getLeaf(PPointer &p, char* &pmem_addr);     // get and use a free leaf
     bool     freeLeaf(PPointer p);     // free the used leaf
     bool     newLeafGroup();           // allocate a new group of leaves
     bool     ifLeafUsed(PPointer p);   // judge whether the leaf is used
