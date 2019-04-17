@@ -13,6 +13,6 @@ This is the programming project of DBMS course in 2019
 
 ## 前期工作与论文阅读总结
 这次作业主要做部分前期工作和论文的阅读，为后面的课程设计编程部分做准备。请小组分工完成实验和问题解答，按照模板填写答案和实验结果。  
-**文档使用Markdown编写，不会的请自行学习**。
+**文档使用Markdown编写，不会的请自行学习。完成后将markdown转pdf，提交pdf。**。
 
 ## To Be Continued...
