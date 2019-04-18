@@ -1,21 +1,53 @@
-# Node
-key : d <= m <= 2d </br>
-node : d + 1 <= m < = 2d + 1 </br>
 
-# Data Structure Introduction
-FPTree is like B+tree. The B+tree management is based on the B+tree in the book "Database Management Systems, 3'rd Edition".
 
-## Class InnerNode
+# 代码框架讲解
+下面针对框架中的每一个主要对象以及其组成进行实现说明，规定相关细节。
+## FPTree
 
-### Delete -- bool remove(Key k)
-The Delete progress just simply remove the target KV, without rearranging the Node and merging. -- TODO
+## Node
+这是InnerNode和LeafNode的父类对象，其相关限制在子类对象一样适用。
 
-### Split -- void split()
-Put the [0, d] entry to the old node, and the [d+1, 2*d] to the new child node. After the split, insert the new entry.
 
-## Class LeafNode
+## InnerNode
 
-# PAllocator
+### 节点元素个数限制
+通过对节点的合并和分裂操作，保证每个节点的元素个数限制在以下范围(FPTree的根少于d)：  
+key个数 : d <= m <= 2d </br>
+node指针个数 : d + 1 <= m < = 2d + 1 </br>
+
+### 键值对删除
+
+### 键值对插入
+
+### 键值对查询
+
+### 键值对修改
+
+### 节点分裂
+
+### 节点合并
+
+### 节点删除
+
+## LeafNode
+
+### 节点元素个数限制
+通过对节点的合并和分裂操作，保证每个节点的元素个数限制在以下范围(只有一个叶子时可以少于d)：  
+键值对个数 : d <= m < 2d </br>
+
+### 键值对删除
+
+### 键值对插入
+
+### 键值对查询
+
+### 键值对修改
+
+### 叶子分裂
+
+### 叶子合并
+
+### 叶子删除
+
+## PAllocator
 There are two file used for allocation management, p_allocator_catalog and free_list. Leaf group file is named by number counting from 1. 
-
-# Attention
