@@ -25,7 +25,7 @@ typedef uint64_t  Key;    // key(8 byte)
 typedef uint64_t  Value;  // value(8 byte)
 
 //leaves file and pallocator data storing place
-const string DATA_DIR =  "/home/zhangjoe/Desktop/pmem/";
+const string DATA_DIR =  ""; // TODO
 
 // leaf header length, the bitmap is simply one byte for a leaf
 const uint64_t LEAF_GROUP_HEAD = sizeof(uint64_t) + LEAF_GROUP_AMOUNT;

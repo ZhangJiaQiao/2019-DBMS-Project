@@ -12,7 +12,7 @@ using std::map;
 class PAllocator {
 private:
     static PAllocator*   pAllocator;    // singleton
-    PPointer             startLeaf;     //first leaf's PPointer of fptree
+    PPointer             startLeaf;     // first leaf's PPointer of fptree
     uint64_t             maxFileId;     // current fileId not used
     uint64_t             freeNum;       // free leaves amount
     vector<PPointer>     freeList;      // leaves list: the leaf that has been allocatored but is free
