@@ -17,7 +17,7 @@
 VSCODE，有gdb调试功能，自学，调试时打开文件用绝对路径否则出错。自带git管理插件，可以方便使用git。下载TODO插件可以高亮需要做的TODO。
 
 ## 工作
-1. 各模块代码以及单元测试代码的编译(单元测试样例可以参考gtest仓库的sample文件夹的示例makefile)
+1. 各模块代码以及单元测试代码的编译(单元测试样例编译可以参考[gtest仓库的示例makefile](https://github.com/google/googletest/blob/master/googletest/make/Makefile))
 2. cpp源代码的填写实现(TODO注释标明)
 ---
 ## FPTree
