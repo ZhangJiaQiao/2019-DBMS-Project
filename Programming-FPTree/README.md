@@ -19,7 +19,22 @@ VSCODE，有gdb调试功能，自学，调试时打开文件用绝对路径否�
 ## 工作
 1. 各模块代码以及单元测试代码的编译(单元测试样例编译可以参考[gtest仓库的示例makefile](https://github.com/google/googletest/blob/master/googletest/make/Makefile))
 2. cpp源代码的填写实现(TODO注释标明)
+
+## 步骤
+1. 根据说明和注释完成cpp源文件和编译命令
+2. 编译main和所有的测试代码，通过所有单元测试
+3. 利用ycsb，读取workload的操作，对FPTree进行性能测试
+4. 完成实验报告
+
 ---
+## PMDK
+这次课程设计使用的是PMDK的libpmem库，这是其最基本的一个库，FPTree中所有涉及NVM的操作利用其进行。编程要用到的函数如下：
+1. pmem_map_file：打开并映射文件
+2. pmem_persist：持久化对NVM内容的修改
+
+## YCSB
+这是一个键值数据库性能测试的benchmark，细节请看其[github仓库](https://github.com/brianfrankcooper/YCSB)。
+
 ## FPTree
 这是整个键值存储系统的接口类，通过其调用InnerNode进而调用LeafNode进行键值对操作。一个FPTree就是一个键值对库，对应一个文件夹。其数据文件与PAllocator的管理文件存在在同一个文件夹下。**请自行注明数据的存储位置(NVM挂载的文件夹)，定义在utility.h中的DATA_DIR变量**
 ### 增删改查
