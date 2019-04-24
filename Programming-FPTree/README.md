@@ -44,7 +44,7 @@
 2. FPTree的micro-log
 3. HTM并行机制
 
-项目目录说明(不要改动文件的位置，可以自由增添文件)：  
+项目目录说明(不要改动文件的存放位置，可以自由增添文件至规定文件夹)：  
 ```
 |__gtest: 为Google Test项目目录，不用管  
 |__include: 里包含所有用到的头文件  
@@ -97,10 +97,10 @@ VSCODE，有gdb调试功能，自学，调试时打开文件用绝对路径否�
 6. 完成实验报告
 
 **硬性时间要求(branch过截止日期后请不要修改，否则扣分处理)**：
-1. 系统说明书，PAllocator实现并通过utility测试，LevelDB的使用以及测试，对应lycsb.cpp，p_allocator.cpp的实现和运行，utility_test.cpp的运行 --- 5/4晚前发布v1版本branch(不会分支的自学)
-2. FPTreeDB插入和重载操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/11晚前发布v2版本branch
-3. FPTreeDB查询和更新操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/18晚前发布v3版本branch
-4. FPTreeDB删除操作和所有剩下实现以及测试，对应fptree.cpp的实现和fptree_test.cpp所有的运行 --- 5/31晚前发布final版本branch，作为最后发布版本
+1. 系统说明书，PAllocator实现并通过utility测试，LevelDB的使用以及测试，对应lycsb.cpp，p_allocator.cpp的实现和运行，utility_test.cpp的运行 --- 5/4晚前发布v1版本branch(不会分支的自学)(20分)
+2. FPTreeDB插入和重载操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/11晚前发布v2版本branch(30分)
+3. FPTreeDB查询和更新操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/18晚前发布v3版本branch(10分)
+4. FPTreeDB删除操作和所有剩下实现以及测试，对应fptree.cpp的实现和fptree_test.cpp所有的运行 --- 5/31晚前发布final版本branch，作为最后发布版本(40分)
 
 ---
 ## PMDK
@@ -280,7 +280,7 @@ PAllocator为单例模式，一个PAllocator管理一个FPTree。FPTree初始化
 
 ---
 ## 加分项
-本次实验设置了一些加分项，假设都做了并且总体效果很好，那课程设计满分是必须的。对于课程设计完成出色的同学，TA会考虑相应在期末考试加福利。  
+本次实验设置了一些加分项，假设都做了并且总体效果很好，那课程设计满分是必须的。需要注意的是加分项必须在完成所有基本实现后才算有效，基本功能没有完成的加分项无效。  
 下面为加分项：
-1. 实现原始FPTree的micro-log机制，在叶子分裂与叶子删除操作中相应实现。为了不影响基础分裂与删除流程，请额外实现另外版本的叶子分裂和叶子删除函数，并自写google test单元测试。
-2. 实现多线程版本的FPTree。不使用论文中的HTM方法，基于简单的节点加锁机制实现即可，即在对一个节点读写时相应加上共享锁和排它锁。加锁机制没有具体限制，实现的同学请在文档说明实现原理。多线程版本的FPTree不应影响基础单线程版本FPTree的测试，所以请另外用一个项目实现CFPTree。
+1. 实现原始FPTree的micro-log机制，在叶子分裂与叶子删除操作中相应实现。为了不影响基础分裂与删除流程，请额外实现另外版本的叶子分裂和叶子删除函数，并自写google test单元测试。(20分)
+2. 实现多线程版本的FPTree。不使用论文中的HTM方法，基于简单的节点加锁机制实现即可，即在对一个节点读写时相应加上共享锁和排它锁。加锁机制没有具体限制，实现的同学请在文档说明实现原理。多线程版本的FPTree不应影响基础单线程版本FPTree的测试，所以请另外用一个项目实现CFPTree。(40分)
