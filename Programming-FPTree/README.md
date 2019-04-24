@@ -55,6 +55,10 @@
       |__clhash.h: 指纹计算所用哈希函数头文件  
       |__p_allocator.h: NVM内存分配器头文件  
 |__src: 为项目源码所在地，完成里面所有的实现  
+   |__bin: 可执行文件所在文件夹
+      |__main: main.cpp的可执行文件
+      |__lycsb: lycsb.cpp的可执行文件
+      |__ycsb: ycsb.cpp的可执行文件
    |__fptree.cpp: fptree的源文件，项目核心文件(TODO)  
    |__clhash.c: 指纹计算的哈希函数源文件  
    |__p_allocator.cpp: NVM内存分配器源文件(TODO)  
@@ -65,6 +69,9 @@
    |__数据量-rw-读比例-写比例-load.txt: YCSB测试数据库装载文件  
    |__数据量-rw-读比例-写比例-run.txt: YCSB测试运行文件  
 |__test: 为Google Test用户测试代码所在，请完成编译并通过所有测试  
+   |__bin: 单元测试可执行文件所在文件夹
+      |__fptree_test: fptree_test.cpp的可执行文件
+      |__utility_test: utility_test.cpp的可执行文件
    |__fptree_test.cpp: fptree相关测试  
    |__utility_test.cpp: PAllocator等相关测试  
    |__makefile: gtest单元测试的编译文件   
