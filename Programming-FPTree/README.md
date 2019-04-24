@@ -1,7 +1,7 @@
 
 
 # 代码框架讲解
-下面针对框架中的每一个主要对象以及其组成进行实现说明，规定相关细节。**假设在阅读下面的讲解和代码的注释后对框架实现依然有不懂的问题，可大胆向TA提出或者在github的issue里提出，TA会相应更新进行说明**。
+下面针对框架中的每一个主要对象以及其组成进行实现说明，规定相关细节。**假设在阅读下面的讲解和代码的注释后对框架实现依然有不懂的问题，可大胆向TA提出或者在github的issue里提出，TA会相应更新进行说明**。推荐issue提问题，熟悉github的issue操作，也可以同时解决别人相关的问题。所以**有问题的时候先找百度和github的issue** ，不能解决再问TA。**假设重复问了issue提及的问题，酌情扣分处理**。
 
 ## 相关知识
 本次课程设计会教会大家很多基本知识，不了解的自行百度，详情如下:
@@ -44,12 +44,29 @@
 2. FPTree的micro-log
 3. HTM并行机制
 
-项目目录说明(不要改动文件的位置，可以自由增添文件)：
-1. gtest为Google Test项目目录，不用管
-2. include里包含所有用到的头文件
-3. src为项目源码所在地，完成里面所有的实现
-4. workloads为YCSB测试负载文件，用于YCSB Benchmark测试
-5. test为Google Test用户测试代码所在，请完成编译并通过所有测试  
+项目目录说明(不要改动文件的位置，可以自由增添文件)：  
+|__gtest: 为Google Test项目目录，不用管  
+|__include: 里包含所有用到的头文件  
+&ensp;&ensp;|__fptree: fptree的头文件所在文件夹  
+&ensp;&ensp;&ensp;&ensp;|__fptree.h: fptree地头文件  
+&ensp;&ensp;|__utility: fptree所用工具的头文件所在文件夹  
+&ensp;&ensp;&ensp;&ensp;|__utility.h: 指纹计算等工具函数所在头文件  
+&ensp;&ensp;&ensp;&ensp;|__clhash.h: 指纹计算所用哈希函数头文件  
+&ensp;&ensp;&ensp;&ensp;|__p_allocator.h: NVM内存分配器头文件  
+|__src: 为项目源码所在地，完成里面所有的实现  
+&ensp;&ensp;|__fptree.cpp: fptree的源文件，项目核心文件(TODO)  
+&ensp;&ensp;|__clhash.c: 指纹计算的哈希函数源文件  
+&ensp;&ensp;|__p_allocator.cpp: NVM内存分配器源文件(TODO)  
+&ensp;&ensp;|__lycsb.cpp: LevelDB的YCSB测试代码(TODO)  
+&ensp;&ensp;|__ycsb.cpp: FPTreeDB和LevelDB的YCSB对比测试代码(TODO)  
+&ensp;&ensp;|__makefile: src下项目的编译文件  
+|__workloads: 为YCSB测试负载文件，用于YCSB Benchmark测试  
+&ensp;&ensp;|__数据量-rw-读比例-写比例-load.txt: YCSB测试数据库装载文件  
+&ensp;&ensp;|__数据量-rw-读比例-写比例-run.txt: YCSB测试运行文件  
+|__test: 为Google Test用户测试代码所在，请完成编译并通过所有测试  
+&ensp;&ensp;|__fptree_test.cpp: fptree相关测试  
+&ensp;&ensp;|__utility_test.cpp: PAllocator等相关测试  
+&ensp;&ensp;|__makefile: gtest单元测试的编译文件   
 
 对于FPTree实现，总体理解其实很简单，可以如下理解：
 1. 对于FPTree的中间节点实现，大家完全照搬书本B+tree实现理解即可，实现也以课本伪代码为参考。
@@ -71,10 +88,10 @@ VSCODE，有gdb调试功能，自学，调试时打开文件用绝对路径否�
 6. 完成实验报告
 
 **硬性时间要求(branch过截止日期后请不要修改，否则扣分处理)**：
-1. 系统说明书，PAllocator实现并通过utility测试，LevelDB的使用以及测试 --- 5/4晚前发布v1版本branch(不会分支的自学)
-2. FPTreeDB插入和重载操作并通过相关测试 --- 5/11晚前发布v2版本branch
-3. FPTreeDB查询和更新操作并通过相关测试 --- 5/18晚前发布v3版本branch
-4. FPTreeDB删除操作和所有剩下实现以及测试 --- 5/31晚前发布final版本branch，作为最后发布版本
+1. 系统说明书，PAllocator实现并通过utility测试，LevelDB的使用以及测试，对应lycsb.cpp，p_allocator.cpp的实现和运行，utility_test.cpp的运行 --- 5/4晚前发布v1版本branch(不会分支的自学)
+2. FPTreeDB插入和重载操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/11晚前发布v2版本branch
+3. FPTreeDB查询和更新操作并通过相关测试，对应fptree.cpp的实现和fptree_test.cpp部分的运行 --- 5/18晚前发布v3版本branch
+4. FPTreeDB删除操作和所有剩下实现以及测试，对应fptree.cpp的实现和fptree_test.cpp所有的运行 --- 5/31晚前发布final版本branch，作为最后发布版本
 
 ---
 ## PMDK
@@ -82,8 +99,16 @@ VSCODE，有gdb调试功能，自学，调试时打开文件用绝对路径否�
 1. pmem_map_file：打开并映射文件
 2. pmem_persist：持久化对NVM内容的修改
 
-## YCSB
-这是一个键值数据库性能测试的benchmark，细节请看其[github仓库](https://github.com/brianfrankcooper/YCSB)。
+## YCSB测试
+这是一个键值数据库性能测试的benchmark，细节请看其[github仓库](https://github.com/brianfrankcooper/YCSB)。  
+YCSB大体上分两个步，第一步是读取load文件，插入一定量的数据对数据库进行初始化。第二步是读取run文件，进行数据库相关操作。load和run文件的一条操作语句如下:
+```
+INSERT 6284781860667377211
+```
+上面INSERT表示插入操作，后面是键值。因为FPTreeDB键值对为8bytes-8bytes，所以**只需取这个值的前8字节即可**。为了简单起见，**键和值取相同即可**。所以请按上述要求和说明实现lycsb和ycsb的运行代码。
+
+## Google Test单元测试
+单元测试的源文件在test文件夹下，每个测试的名称对应其要测试的目标函数和功能，上面介绍的硬性要求的每个阶段需要通过的测试可以通过测试名得知(别说看不懂测试名)。当测试的目标功能没有完成时会发生段错误，所以测试时把未完成的功能的测试先注释掉再跑测试即可。**TA测试的时候会用这个仓库下的测试代码进行，所以别修改测试代码**。
 
 ## FPTree
 这是整个键值存储系统的接口类，通过其调用InnerNode进而调用LeafNode进行键值对操作。一个FPTree就是一个键值对数据库，对应一个文件夹。其数据文件与PAllocator的管理文件存在在同一个文件夹下。**请自行注明数据的存储位置(NVM挂载的文件夹)，定义在utility.h中的DATA_DIR变量**
