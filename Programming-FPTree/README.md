@@ -275,6 +275,20 @@ LeafGroup是数据文件，其文件名用整数表示，从1递增分配即可�
 ### 运行流程
 PAllocator为单例模式，一个PAllocator管理一个FPTree。FPTree初始化时PAllocator也要初始化，初始化其管理变量，将已有的叶子通过PMDK的打开文件方式内存映射成虚拟地址，进行PPointer与虚拟地址的转化，供FPTree使用。
 
+## 数据文件说明
+### utility.h中需要使用的常量
+``` C++
+#define LEAF_DEGREE 56 // 叶子的度
+#define INNER_DEGREE 4096 // 中间节点的度
+
+#define MAX_KEY UINT64_MAX; // 键值最大值
+#define MAX_VALUE UINT64_MAX; // 值的最大值
+
+#define LEAF_GROUP_AMOUNT 16 // 一个LeafGroup含有的叶子数
+#define ILLEGAL_FILE_ID   0
+```
+### 所有数据文件均为定长
+本次课程设计有的数据文件有catalog，freelist以及许多LeafGroup。**代码中注释含有的分隔符只是方便说明，并不是说数据文件中以这些分隔符做数据分隔**。因为数据文件中所有的数据均是定长的，没有变长，所以每个数据变量头尾相接存放即可。对于叶子节点，因为每个键值对是8字节键8字节值，通过上面的LEAF_DEGREE确定叶子含有的键值对个数，那么每个叶子的大小也是可以确定了。上面的LEAF_GROUP_AMOUNT决定了每个LeafGroup的叶子数，那么每个LeafGroup的大小也就确定了。
 ### 注明
 相关变量和函数的说明在注释中已经给出，不清楚的可以问TA。
 

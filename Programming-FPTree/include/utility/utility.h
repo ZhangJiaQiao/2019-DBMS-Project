@@ -6,13 +6,13 @@
 #define UTILITY_VALUE
 #define MAX_DEGREE 256
 #define MIN_DEGREE 2
-#define LEAF_DEGREE 56
-#define INNER_DEGREE 4096
+#define LEAF_DEGREE 56 // 叶子的度
+#define INNER_DEGREE 4096 // 中间节点的度
 
-#define MAX_KEY UINT64_MAX;
-#define MAX_VALUE UINT64_MAX;
+#define MAX_KEY UINT64_MAX; // 键值最大值
+#define MAX_VALUE UINT64_MAX; // 值的最大值
 
-#define LEAF_GROUP_AMOUNT 16
+#define LEAF_GROUP_AMOUNT 16 // 一个LeafGroup含有的叶子数
 #define ILLEGAL_FILE_ID   0
 
 #endif
