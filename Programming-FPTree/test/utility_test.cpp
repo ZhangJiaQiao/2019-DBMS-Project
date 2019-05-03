@@ -130,6 +130,7 @@ TEST(PAllocatorTest, FreeSingleLeaf) {
     EXPECT_EQ(p->freeLeaf(leaf), true);
     EXPECT_EQ(p->getLeaf(leaf, pmem_addr), true);
     EXPECT_EQ(leaf.offset, offset);
+    removeFile();
 }
 
 TEST(PAllocatorTest, GetLeaf) {
@@ -150,7 +151,6 @@ TEST(PAllocatorTest, GetLeaf) {
     remove(file1.c_str());
     remove(freePath.c_str());
 }
-
 TEST(UtilityTest, CountOneBits) {
     int n = countOneBits(117);
     EXPECT_EQ(n, 5);
