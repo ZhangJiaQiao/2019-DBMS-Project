@@ -13,7 +13,8 @@ class PAllocator {
 private:
     static PAllocator*   pAllocator;    // singleton
     PPointer             startLeaf;     // first leaf's PPointer of fptree
-    uint64_t             maxFileId;     // current fileId not used
+    uint64_t             maxFileId;     // current fileId not used 
+    //maxFileId是下一个可用的FileId，maxfileid是单前还没分配的标号，比如4的话就说明1-3都被分配了，4是还没被分配的
     uint64_t             freeNum;       // free leaves amount
     vector<PPointer>     freeList;      // leaves list: the leaf that has been allocatored but is free
     map<uint64_t, char*> fId2PmAddr;    // the map of fileId to pmem address
