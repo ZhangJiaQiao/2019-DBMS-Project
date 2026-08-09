@@ -1,3 +1,5 @@
+
+
 # 2019-DBMS-Project
 This is the programming project of DBMS course in 2019
 
@@ -6,7 +8,7 @@ This is the programming project of DBMS course in 2019
 
 ## 注意事项
 1. 各小组请自行建立属于小组的Github仓库，所有作业小组成员通过Github协作完成（请自学Git相关操作）。
-2. 小组个人评分时只会只会看Github的贡献量，请小组自行平均分工。
+2. 小组个人评分时只会看Github的贡献量，请小组自行平均分工。
 3. Github地址对其他小组保密，避免被抄袭。仓库名字可设置为自己的小组名等（避免被查找并被剽窃）。
 4. 作业要求如有问题或异议，请大胆私聊TA，让大家的课程设计可以顺利进行。
 5. **各小组切忌参考别人的代码和答案，高度雷同的小组都按抄袭处理**。
